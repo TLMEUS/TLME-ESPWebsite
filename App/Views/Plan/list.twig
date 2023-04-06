@@ -1,0 +1,52 @@
+{% extends "layout.twig" %}
+
+{% block title %}ESP  Plans{% endblock %}
+
+{% block body%}
+
+<div class="w3-container">
+    <h1>{{ category.category }} ESP Plans
+        <a href="#" onclick="history.back()"><i class="material-icons w3-text-red">subdirectory_arrow_left</i></a></a>
+        <a href="/plan/add/{{ category.id }}"><i class="material-icons w3-text-red">add_circle_outline</i></a>
+    </h1>
+    <table class="w3-table-all">
+        <tr>
+            <th>Plan Name</th>
+            <th>Start Value</th>
+            <th>End Value</th>
+            <th>Tier 1 Term</th>
+            <th>Tier 1 Cost</th>
+            <th>Tier 1 SKU</th>
+            <th>Tier 2 Term</th>
+            <th>Tier 2 Cost</th>
+            <th>Tier 2 SKU</th>
+            <th>Options</th>
+        </tr>
+        {% for plan in plans %}
+        <tr>
+            <td>{{ plan.name }}</td>
+            <td>{{ plan.min }}</td>
+            {% if plan.max == 99999.99 %}
+                <td> ------ </td>
+            {% else %}
+                <td>{{ plan.max }}</td>
+            {% endif %}
+            <td>{{ plan.tier1term }}</td>
+            <td>{{ plan.tier1cost }}</td>
+            <td>{{ plan.tier1sku }}</td>
+            {% if plan.tier2term == "" %}
+                <td> ------ </td>
+                <td> ------ </td>
+                <td> ------ </td>
+            {% else %}
+                <td>{{ plan.tier2term }}</td>
+                <td>{{ plan.tier2cost }}</td>
+                <td>{{ plan.tier2sku }}</td>
+            {% endif %}
+            <td><a href="/plan/deletePlan/{{ category.id }}/{{ plan.id }}"><i class="material-icons w3-text-red">delete</i></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

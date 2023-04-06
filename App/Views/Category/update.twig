@@ -1,0 +1,33 @@
+{% extends "layout.twig" %}
+
+{% block title %}Update ESP Category{% endblock %}
+
+{% block body%}
+
+    <div class="w3-container">
+        <h1>Update ESP Category<a href="/category/index"><i class="material-icons w3-text-red">subdirectory_arrow_left</i></a></h1>
+        <div class="w3-panel w2-border">
+            <form class="w3-container" action="/category/updateData" method="post">
+                <input name="id" id="id" type="hidden" value="{{ id }}">
+                <input class="w3-input" name="category" id="category" type="text" value="{{ category }}">
+                <label>New Category Name</label>
+                <select class="w3-select" name="below_cost" id="below_cost">
+                    <option value="" disabled>  </option>
+                    {% if belowcost == "1" %}
+                        <option selected value='yes'>Yes</option>
+                    {% else %}
+                        <option value='yes'>Yes</option>
+                    {% endif %}
+                    {% if belowcost == "0" %}
+                        <option selected value='no'>No</option>
+                    {% else %}
+                        <option value='no'>No</option>
+                    {% endif %}
+                </select>
+                <label>New Sell Below Cost Value</label><br /><br />
+                <input class="w3-button w3-blue w3-block" type="submit" value="Update Category">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

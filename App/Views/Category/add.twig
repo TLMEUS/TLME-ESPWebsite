@@ -1,0 +1,24 @@
+{% extends "layout.twig" %}
+
+{% block title %}Add ESP Category{% endblock %}
+
+{% block body%}
+
+<div class="w3-container">
+    <h1>Add ESP Category<a href="/category/index"><i class="material-icons w3-text-red">subdirectory_arrow_left</i></a></h1>
+    <div class="w3-panel w2-border">
+        <form class="w3-container" action="/category/addData" method="post">
+            <input class="w3-input" name="category" id="category" type="text">
+            <label for="category">Category Name</label>
+            <select class="w3-select" name="below_cost">
+                <option value="" disabled selected>  </option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <label>Sell Below Cost</label><br /><br />
+            <input class="w3-button w3-blue w3-block" type="submit" value="Add Category">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

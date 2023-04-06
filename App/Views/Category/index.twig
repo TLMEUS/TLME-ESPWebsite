@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+{% block title %}ESP Categories{% endblock %}
+
+{% block body%}
+
+<div class="w3-container">
+    <h1>ESP Category List<a href="/category/add"><i class="material-icons w3-text-red">add_circle_outline</i></a></h1>
+    <table class="w3-table-all">
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Sell Below Cost</th>
+        </tr>
+        {% for category in categories %}
+            <tr>
+                <td><a id="id" href="/category/update/{{ category.id }}" class="w3-text-red" style="text-decoration: none;">{{ category.id }}</a></td>
+                <td>{{ category.category }}</td>
+                <td>
+                    {% if category.below_cost == 0 %}
+                        no
+                    {% else %}
+                        yes
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.twig" %}
+
+{% block title %}ESP  Plans{% endblock %}
+
+{% block body%}
+
+<div class="w3-container">
+    <h4>
+        Add a new plan to the {{ category.category }} category.
+        <a href="#" onclick="history.back()"><i class="material-icons w3-text-red">subdirectory_arrow_left</i></a>
+    </h4>
+    <form action="/plan/addPlan" method="post">
+        <input name="parent" id="parent" type="hidden" value="{{ category.id }}">
+        <table style="width: 100%">
+            <tr>
+                <td><label for="name"></label><input class="w3-input" name="name" id="name" type="text"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">Plan Name(Optional)</td>
+            </tr>
+        </table>
+        <hr style="height: 1px; background-color: #cccccc" />
+        <table style="width: 100%">
+            <tr>
+                <td colspan="2" style="text-align: center">Cost Range</td>
+            </tr>
+            <tr>
+                <td style="width: 50%;"><label for="min"></label><input class="w3-input" type="number" name="min" step="0.01" id="min"></td>
+                <td style="width: 50%;"><label for="max"></label><input class="w3-input" type="number" name="max" step="0.01" id="max"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><label>Minimum Cost</label></td>
+                <td style="text-align: center;"><label>Maximum Cost</label></td>
+            </tr>
+        </table>
+        <hr style="height: 1px; background-color: #cccccc" />
+        <table style="width: 100%">
+            <tr>
+                <td colspan="3" style="width: 100%; text-align: center;">Tier 1</td>
+            </tr>
+            <tr>
+                <td style="width: 33%;"><label for="tier1term"></label><input type="text" name="tier1term" id="tier1term" class="w3-input"></td>
+                <td style="width: 33%;"><label for="tier1cost"></label><input type="number" step="0.01" name="tier1cost" id="tier1cost" class="w3-input"></td>
+                <td style="width: 34%;"><label for="tier1sku"></label><input type="number" name="tier1sku" id="tier1sku" class="w3-input"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">Name(e.g 2 Year)</td>
+                <td style="text-align: center;">Price(e.g. 9.99)</td>
+                <td style="text-align: center;">SKU(e.g.  12345678)</td>
+            </tr>
+        </table>
+        <hr style="height: 1px; background-color: #cccccc" />
+        <table style="width: 100%">
+            <tr>
+                <td colspan="3" style="width: 100%; text-align: center;">Tier 2</td>
+            </tr>
+            <tr>
+                <td style="width: 33%;"><label for="tier2term"></label><input type="text" name="tier2term" id="tier2term" class="w3-input"></td>
+                <td style="width: 33%;"><label for="tier2cost"></label><input type="number" step="0.01" name="tier2cost" id="tier2cost" class="w3-input"></td>
+                <td style="width: 34%;"><label for="tier2sku"></label><input type="number" name="tier2sku" id="tier2sku" class="w3-input"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">Name(e.g 4 Year)</td>
+                <td style="text-align: center;">Price(e.g. 19.99)</td>
+                <td style="text-align: center;">SKU(e.g.  87654321)</td>
+            </tr>
+        </table>
+        <br /><br />
+        <input class="w3-button w3-blue w3-block" type="submit" value="Add Plan">
+    </form>
+</div>
+
+{% endblock %}
